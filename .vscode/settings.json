@@ -3,5 +3,6 @@
     "Uploadthing",
     "Upstash",
     "utfs"
-  ]
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
