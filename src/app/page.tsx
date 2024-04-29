@@ -3,8 +3,8 @@ import { mockImages } from "~/lib/mock-data";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gray-200 p-4">
-      <ul data-images-list className="flex flex-wrap items-center justify-center gap-4">
+    <main className="p-4">
+      <ul data-images-list className="flex flex-wrap items-center justify-between gap-4">
         {mockImages.map((image) => (
           <li
             key={image.id}
