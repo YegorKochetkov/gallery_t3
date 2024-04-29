@@ -4,7 +4,7 @@ import { ImagesSkeleton } from "~/ui/skeletons";
 
 export const dynamic = "force-dynamic";
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <main className="p-4">
       <Suspense fallback={<ImagesSkeleton />}>
