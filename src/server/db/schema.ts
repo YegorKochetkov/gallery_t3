@@ -27,7 +27,7 @@ export const images = createTable(
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
-    updatedAt: timestamp("updatedAt"),
+    updatedAt: timestamp("updated_at"),
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
