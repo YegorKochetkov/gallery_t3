@@ -16,7 +16,7 @@ export default async function HomePage() {
           >
             <Image
               src={image.url}
-              alt="random AI generated image"
+              alt={image.name}
               width={500}
               height={500}
               className="object-cover"
