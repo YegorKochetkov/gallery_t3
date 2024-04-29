@@ -4,11 +4,11 @@ import { mockImages } from "~/lib/mock-data";
 export default function HomePage() {
   return (
     <main className="p-4">
-      <ul data-images-list className="flex flex-wrap items-center justify-between gap-4">
+      <ul data-images-list className="grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
         {mockImages.map((image) => (
           <li
             key={image.id}
-            className="relative rounded w-full sm:w-48 aspect-square overflow-hidden"
+            className="rounded overflow-hidden"
           >
             <Image
               src={image.url}
