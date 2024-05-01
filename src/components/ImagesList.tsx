@@ -16,7 +16,7 @@ export const ImagesList = async () => {
             alt={image.name}
             width={200}
             height={200}
-            className="object-cover"
+            className="object-cover w-full"
           />
         </li>
       ))}
