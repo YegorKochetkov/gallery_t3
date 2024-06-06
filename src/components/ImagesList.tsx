@@ -5,7 +5,10 @@ export const ImagesList = async () => {
   const images = await db.query.images.findMany();
 
   return (
-    <ul data-images-list className="grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
+    <ul
+      data-images-list
+      className="gap-4 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]"
+    >
       {images.map((image) => (
         <li
           key={image.id}
@@ -16,7 +19,7 @@ export const ImagesList = async () => {
             alt={image.name}
             width={200}
             height={200}
-            className="object-cover w-full"
+            className="w-full object-cover"
           />
         </li>
       ))}
