@@ -6,8 +6,8 @@ export const TopNav = () => {
 			<h1 className="sr-only">Gallery T3 App</h1>
 			<nav
 				className={`
-          flex w-full items-center justify-between p-4 text-xl font-semibold
-        `}
+					flex w-full items-center justify-between p-4 text-xl font-semibold
+				`}
 			>
 				<span>TopNav</span>
 				<span>Sign in</span>
