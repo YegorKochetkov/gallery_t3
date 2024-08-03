@@ -6,28 +6,28 @@ const shimmer = `
 `;
 
 export function ImageSkeleton() {
-  return (
-    <div
-      className={`
+	return (
+		<div
+			className={`
         ${shimmer} 
-        relative rounded overflow-hidden aspect-square min-h-48 bg-gray-300 
+        relative aspect-square min-h-48 overflow-hidden rounded bg-gray-300 
         p-2 shadow-sm
       `}
-    />
-  );
+		/>
+	);
 }
 
 export function ImagesSkeleton() {
-  return (
-    <div className="gap-4 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
-      <ImageSkeleton />
-      <ImageSkeleton />
-      <ImageSkeleton />
-      <ImageSkeleton />
-      <ImageSkeleton />
-      <ImageSkeleton />
-      <ImageSkeleton />
-      <ImageSkeleton />
-    </div>
-  );
+	return (
+		<div className="gap-4 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
+			<ImageSkeleton />
+			<ImageSkeleton />
+			<ImageSkeleton />
+			<ImageSkeleton />
+			<ImageSkeleton />
+			<ImageSkeleton />
+			<ImageSkeleton />
+			<ImageSkeleton />
+		</div>
+	);
 }

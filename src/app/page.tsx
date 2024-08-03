@@ -5,11 +5,11 @@ import { ImagesSkeleton } from "~/ui/skeletons";
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
-  return (
-    <main className="p-4">
-      <Suspense fallback={<ImagesSkeleton />}>
-        <ImagesList />
-      </Suspense>
-    </main>
-  );
+	return (
+		<main className="p-4">
+			<Suspense fallback={<ImagesSkeleton />}>
+				<ImagesList />
+			</Suspense>
+		</main>
+	);
 }
