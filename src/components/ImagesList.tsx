@@ -13,13 +13,16 @@ export const ImagesList = async () => {
 		>
 			{images.map((image) => (
 				<li key={image.id} className="rounded overflow-hidden">
-					<Image
-						src={image.url}
-						alt={image.name}
-						width={200}
-						height={200}
-						className="w-full object-cover"
-					/>
+					<figure>
+						<Image
+							src={image.url}
+							alt={image.name}
+							width={200}
+							height={200}
+							className="w-full object-cover"
+						/>
+						<figcaption>{image.name}</figcaption>
+					</figure>
 				</li>
 			))}
 		</ul>
