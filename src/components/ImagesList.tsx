@@ -2,7 +2,9 @@ import Image from "next/image";
 import { db } from "~/server/db";
 
 export const ImagesList = async () => {
-	const images = await db.query.images.findMany();
+	const images = await db.query.images.findMany({
+		orderBy: (model, { asc }) => asc(model.name),
+	});
 
 	return (
 		<ul
