@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { db } from "~/server/db";
+import { ImageItem } from "./ImageItem";
 
 export const ImagesList = async () => {
 	const images = await db.query.images.findMany({
@@ -12,17 +12,8 @@ export const ImagesList = async () => {
 			className="gap-4 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]"
 		>
 			{images.map((image) => (
-				<li key={image.id} className="rounded overflow-hidden">
-					<figure>
-						<Image
-							src={image.url}
-							alt={image.name}
-							width={200}
-							height={200}
-							className="w-full object-cover"
-						/>
-						<figcaption>{image.name}</figcaption>
-					</figure>
+				<li key={image.id}>
+					<ImageItem {...image} />
 				</li>
 			))}
 		</ul>
