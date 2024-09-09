@@ -6,8 +6,9 @@
 - [x] Add basic UI with mock data
 - [x] Set up database with Vercel Postgres
 - [x] Attach database to UI
-- [ ] Add authentication with Clerk
+- [x] Add authentication with Clerk
 - [ ] Add image upload with Uploadthing
+- [ ] "taint" (server-only)
 - [ ] Error management with Sentry
 - [ ] Parallel routing for image page
 - [ ] Server actions for delete
