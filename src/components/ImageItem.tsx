@@ -16,6 +16,5 @@ export const ImageItem = (image: {
       />
       <figcaption>{image.name}</figcaption>
     </figure>
-
   )
 }
