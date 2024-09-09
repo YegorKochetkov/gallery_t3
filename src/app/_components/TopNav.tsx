@@ -11,7 +11,7 @@ export const TopNav = () => {
 				`}
 			>
 				<span>TopNav</span>
-				<div>
+				<div className="flex">
 					<SignedOut>
 						<SignInButton />
 					</SignedOut>
