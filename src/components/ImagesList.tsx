@@ -1,17 +1,13 @@
-import { db } from "~/server/db";
 import { ImageItem } from "./ImageItem";
 
-import { auth } from "@clerk/nextjs/server";
+import { getUserImages } from "~/server/queries";
 
 export const ImagesList = async () => {
-	const user = auth();
+	const { images, error } = await getUserImages();
 
-	if (!user.userId) return null;
-
-	const images = await db.query.images.findMany({
-		where: (model, { eq }) => eq(model.userId, user.userId),
-		orderBy: (model, { asc }) => asc(model.name),
-	});
+	if (error) {
+		return <p className="text-2xl text-center">{error}</p>;
+	}
 
 	return (
 		<ul
