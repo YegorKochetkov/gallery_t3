@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	/* Loading animation */
+	.shimmer {
+		@apply before:absolute before:inset-0 before:-translate-x-full 
+      before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r 
+      before:from-transparent before:via-white/30 before:to-transparent;
+	}
+}
