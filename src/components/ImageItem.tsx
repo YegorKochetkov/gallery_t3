@@ -13,10 +13,7 @@ export const ImageItem = (image: {
           alt={image.name}
           width={200}
           height={200}
-          className={`
-            w-full transform-gpu transition-transform object-cover
-            hover:scale-105
-          `}
+          className="w-full transform-gpu transition-transform object-cover hover:scale-105"
         />
       </div>
       <figcaption>{image.name}</figcaption>

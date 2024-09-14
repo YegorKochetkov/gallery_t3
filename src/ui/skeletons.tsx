@@ -1,11 +1,6 @@
 export function ImageSkeleton() {
 	return (
-		<div
-			className={`
-				shimmer bg-gray-300 p-2 shadow-sm relative aspect-square min-h-48
-				overflow-hidden rounded
-			`}
-		/>
+		<div className="relative bg-gray-300 shadow-sm p-2 rounded min-h-48 overflow-hidden aspect-square shimmer" />
 	);
 }
 
