@@ -9,7 +9,7 @@ export default function HomePage() {
 	return (
 		<main className="p-4">
 			<SignedOut>
-				<p className="text-2xl text-center">Please, sign in</p>
+				<p className="text-center text-2xl">Please, sign in</p>
 			</SignedOut>
 
 			<SignedIn>

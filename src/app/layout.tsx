@@ -1,23 +1,23 @@
-import { ClerkProvider } from '@clerk/nextjs';
-import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin';
-import { extractRouterConfig } from 'uploadthing/server';
+import { ClerkProvider } from "@clerk/nextjs";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
 
 import "@uploadthing/react/styles.css";
 import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
-import { TopNav } from './_components/TopNav';
-import { ourFileRouter } from './api/uploadthing/core';
+import { TopNav } from "./_components/TopNav";
+import { ourFileRouter } from "./api/uploadthing/core";
 
 const inter = Inter({
-	subsets: [ "latin" ],
+	subsets: ["latin"],
 	variable: "--font-sans",
 });
 
 export const metadata = {
 	title: "T3 Gallery",
 	description: "Exploring the T3 stack by creating an image gallery",
-	icons: [ { rel: "icon", url: "/favicon.ico" } ],
+	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default function RootLayout({
@@ -37,7 +37,9 @@ export default function RootLayout({
 					 */
 					routerConfig={extractRouterConfig(ourFileRouter)}
 				/>
-				<body className={`font-sans ${inter.variable} min-h-screen bg-gray-200`}>
+				<body
+					className={`font-sans ${inter.variable} min-h-screen bg-gray-200`}
+				>
 					<TopNav />
 					{children}
 				</body>
