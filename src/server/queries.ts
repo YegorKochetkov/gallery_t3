@@ -1,8 +1,15 @@
 import "server-only";
-import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
 
-export async function getUserImages() {
+import { db } from "./db";
+import { type Image } from "./db/schema";
+import { type OneOf } from "~/lib/utils";
+
+type getUserImagesResult = OneOf<
+	[{ images: Image[]; error: null }, { images: null; error: string }]
+>;
+
+export async function getUserImages(): Promise<getUserImagesResult> {
 	const user = auth();
 
 	if (!user.userId) return { images: null, error: "Unauthorized" };
