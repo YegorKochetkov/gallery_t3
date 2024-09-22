@@ -1,11 +1,13 @@
 import "server-only";
-import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
+
+import { db } from "./db";
+import { type Image } from "./db/schema";
 
 export async function getUserImages() {
 	const user = auth();
 
-	if (!user.userId) return { images: [], error: "Unauthorized" };
+	if (!user.userId) return { images: [] as Image[], error: "Unauthorized" };
 
 	try {
 		const images = await db.query.images.findMany({
@@ -17,6 +19,9 @@ export async function getUserImages() {
 	} catch (error) {
 		console.error("Can`t get images", error);
 
-		return { images: [], error: "Can`t get images. Please try again later." };
+		return {
+			images: [] as Image[],
+			error: "Can`t get images. Please try again later.",
+		};
 	}
 }
