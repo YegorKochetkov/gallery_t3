@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 export async function getUserImages() {
 	const user = auth();
 
-	if (!user.userId) return { images: [], error: "Unauthorized" };
+	if (!user.userId) return { images: null, error: "Unauthorized" };
 
 	try {
 		const images = await db.query.images.findMany({
@@ -17,6 +17,6 @@ export async function getUserImages() {
 	} catch (error) {
 		console.error("Can`t get images", error);
 
-		return { images: [], error: "Can`t get images. Please try again later." };
+		return { images: null, error: "Can`t get images. Please try again later." };
 	}
 }
