@@ -10,14 +10,13 @@ import { TopNav } from "./_components/TopNav";
 import { ourFileRouter } from "./api/uploadthing/core";
 
 const inter = Inter({
-	subsets: ["latin"],
-	variable: "--font-sans",
+	subsets: [ "latin" ],
 });
 
 export const metadata = {
 	title: "T3 Gallery",
 	description: "Exploring the T3 stack by creating an image gallery",
-	icons: [{ rel: "icon", url: "/favicon.ico" }],
+	icons: [ { rel: "icon", url: "/favicon.ico" } ],
 };
 
 export default function RootLayout({
@@ -38,7 +37,7 @@ export default function RootLayout({
 					routerConfig={extractRouterConfig(ourFileRouter)}
 				/>
 				<body
-					className={`font-sans ${inter.variable} min-h-screen bg-gray-200`}
+					className={`${inter.className} min-h-screen bg-gray-200`}
 				>
 					<TopNav />
 					{children}
