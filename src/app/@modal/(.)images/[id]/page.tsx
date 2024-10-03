@@ -24,7 +24,7 @@ export default async function ImageModal({
         <div className="col-span-2 w-fit h-4/5 [&>img]:ml-auto [&>img]:object-top [&>img]:w-auto [&>img]:h-full [&>img]:object-contain">
           <ImageFullPageView image={image} />
         </div>
-        <div className="text-2xl">
+        <div className="text-shadow text-2xl">
           <p>tags of image</p>
           <p>tags of image</p>
           <p>tags of image</p>

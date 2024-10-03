@@ -9,6 +9,14 @@
       before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r
       before:from-transparent before:via-black/20 before:to-transparent;
 	}
+
+	.text-shadow {
+		text-shadow:
+			0.15em 0 0.3em #000,
+			-0.15em 0 0.3em #000,
+			0 0 0.3em #000,
+			0 0 0.15em #000;
+	}
 }
 
 dialog {
