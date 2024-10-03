@@ -10,3 +10,8 @@
       before:from-transparent before:via-black/20 before:to-transparent;
 	}
 }
+
+dialog {
+	max-width: 100vw;
+	max-height: 100vh;
+}
