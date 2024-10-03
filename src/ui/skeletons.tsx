@@ -1,12 +1,12 @@
 export function ImageSkeleton() {
 	return (
-		<div className="shimmer relative aspect-square min-h-48 overflow-hidden rounded bg-gray-300 p-2 shadow-sm" />
+		<div className="relative bg-gray-300 shadow-sm p-2 rounded overflow-hidden aspect-square shimmer" />
 	);
 }
 
-export function ImagesSkeleton() {
+export function ImagesListSkeleton() {
 	return (
-		<div className="grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
+		<div className="gap-4 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
 			<ImageSkeleton />
 			<ImageSkeleton />
 			<ImageSkeleton />
