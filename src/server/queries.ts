@@ -27,3 +27,30 @@ export async function getUserImages(): Promise<getUserImagesResult> {
 		return { images: null, error: "Can`t get images. Please try again later." };
 	}
 }
+
+type getImageResult = OneOf<
+	[{ image: Image; error: null }, { image: null; error: string }]
+>;
+
+export async function getImage(id: number): Promise<getImageResult> {
+	const user = auth();
+
+	if (!user.userId) return { image: null, error: "Unauthorized" };
+
+	try {
+		const image = await db.query.images.findFirst({
+			where: (model, { eq }) => eq(model.id, id),
+		});
+
+		if (!image) return { image: null, error: "Image not found" };
+		
+		if (image.userId !== user.userId)
+			return { image: null, error: "Unauthorized" };
+
+		return { image, error: null };
+	} catch (error) {
+		console.error("Can`t get image", error);
+
+		return { image: null, error: "Can`t get image. Please try again later." };
+	}
+}
