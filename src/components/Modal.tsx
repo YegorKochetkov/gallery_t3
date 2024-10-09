@@ -10,13 +10,13 @@ export const Modal = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!dialogRef.current?.open) {
-      dialogRef.current?.closest("body")?.classList.add("overflow-clip");
+      dialogRef.current?.closest("body")?.classList.add("overflow-hidden");
       dialogRef.current?.showModal();
     }
   }, []);
 
   function onDismiss() {
-    dialogRef.current?.closest("body")?.classList.remove("overflow-clip");
+    dialogRef.current?.closest("body")?.classList.remove("overflow-hidden");
     router.back();
   }
 
