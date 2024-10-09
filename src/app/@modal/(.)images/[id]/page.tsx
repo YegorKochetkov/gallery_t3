@@ -12,6 +12,7 @@ export default async function ImageModal({
   if (Number.isNaN(idAsNumber)) {
     return <p className="absolute inset-0 text-2xl text-center">Invalid image ID</p>;
   }
+
   const { image, error } = await getImage(+imageId);
 
   if (error !== null) {
@@ -20,11 +21,11 @@ export default async function ImageModal({
 
   return (
     <Modal>
-      <div className="gap-6 grid grid-cols-3">
-        <div className="col-span-2 w-fit h-4/5 [&>img]:ml-auto [&>img]:object-top [&>img]:w-auto [&>img]:h-full [&>img]:object-contain">
+      <div className="flex flex-row gap-5 max-h-full">
+        <div className="[&_img]:object-top [&_img]:mx-auto [&_img]:w-auto [&_img]:h-full [&_img]:object-contain basis-2/3 grow shrink">
           <ImageFullPageView image={image} />
         </div>
-        <div className="text-shadow text-2xl">
+        <div className="border-gray-300 text-shadow pl-5 border-l-2 grow-0 h-min text-2xl basis-1/3">
           <p>tags of image</p>
           <p>tags of image</p>
           <p>tags of image</p>

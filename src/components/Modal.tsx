@@ -10,11 +10,13 @@ export const Modal = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!dialogRef.current?.open) {
+      dialogRef.current?.closest("body")?.classList.add("overflow-clip");
       dialogRef.current?.showModal();
     }
   }, []);
 
   function onDismiss() {
+    dialogRef.current?.closest("body")?.classList.remove("overflow-clip");
     router.back();
   }
 
@@ -22,16 +24,16 @@ export const Modal = ({ children }: { children: React.ReactNode }) => {
     <dialog
       ref={dialogRef}
       data-modal
-      className="relative place-items-center grid bg-zinc-900/70 p-12 w-screen h-screen text-gray-200 overflow-clip"
+      className="bg-transparent py-14 w-screen h-screen text-gray-200 overflow-x-clip"
       onClose={onDismiss}
     >
-      {/* <div className="relative text-gray-200"> */}
-      {/* <div className="relative flex lg:flex-row flex-col gap-6 bg-green-900/70 m-12 lg:max-h-[80vh] text-gray-200"> */}
-      {children}
-      <button onClick={onDismiss} className="top-4 right-4 absolute bg-gray-300 hover:bg-gray-200 px-2 py-1 rounded text-black">
+      <button
+        onClick={onDismiss}
+        className="top-3 right-3 absolute bg-gray-300 hover:bg-gray-200 px-2 py-1 rounded text-black autofocus"
+      >
         Close
       </button>
-      {/* </div> */}
+      {children}
     </dialog >,
     document.getElementById("modal-root")!
   )
