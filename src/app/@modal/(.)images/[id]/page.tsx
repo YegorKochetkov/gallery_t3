@@ -21,11 +21,11 @@ export default async function ImageModal({
 
   return (
     <Modal>
-      <div className="flex flex-row gap-5 max-h-full">
-        <div className="[&_img]:object-top [&_img]:mx-auto [&_img]:w-auto [&_img]:h-full [&_img]:object-contain basis-2/3 grow shrink">
+      <div className="flex md:flex-row flex-col gap-5 max-h-full">
+        <div className="[&_img]:object-top [&_img]:mx-auto [&_img]:w-auto [&_img]:h-full [&_img]:object-contain md:basis-3/4 grow shrink">
           <ImageFullPageView image={image} />
         </div>
-        <div className="border-gray-300 text-shadow pl-5 border-l-2 grow-0 h-min text-2xl basis-1/3">
+        <div className="border-gray-300 text-shadow md:pl-5 md:border-l-2 grow-0 h-min text-2xl shrink-0 md:basis-1/4">
           <p>tags of image</p>
           <p>tags of image</p>
           <p>tags of image</p>
@@ -39,4 +39,4 @@ export default async function ImageModal({
       </div>
     </Modal >
   );
-}
+}          

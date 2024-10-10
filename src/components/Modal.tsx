@@ -24,7 +24,7 @@ export const Modal = ({ children }: { children: React.ReactNode }) => {
     <dialog
       ref={dialogRef}
       data-modal
-      className="bg-transparent py-14 w-screen h-screen text-gray-200 overflow-x-clip"
+      className="bg-transparent px-7 py-14 w-screen h-screen text-gray-200 overflow-x-clip"
       onClose={onDismiss}
     >
       <button
