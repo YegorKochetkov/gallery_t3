@@ -19,7 +19,7 @@ export default async function Image({
   }
 
   return (
-    <div className="mx-auto mt-4 max-w-3xl">
+    <div className="m-4 mx-auto">
       <ImageFullPageView image={image} />
     </div>
   );
