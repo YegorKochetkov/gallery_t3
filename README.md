@@ -9,8 +9,8 @@
 - [x] Add authentication with Clerk
 - [x] Add image upload with Uploadthing
 - [x] "taint" (server-only)
-- [ ] Error management with Sentry
-- [ ] Parallel routing for image page
+- [x] Error management with Sentry
+- [x] Parallel routing for image page
 - [ ] Server actions for delete
 - [ ] Analytics with PostHog
 - [ ] Rate limiting with Upstash
