@@ -1,6 +1,5 @@
 import { ImageFullPageView } from "~/components/ImageFullPageView";
 import { Modal } from "~/components/Modal";
-import { getImage } from "~/server/queries";
 
 export default async function ImageModal({
   params: { id: imageId }
@@ -13,15 +12,9 @@ export default async function ImageModal({
     return <p className="absolute inset-0 text-2xl text-center">Invalid image ID</p>;
   }
 
-  const { image, error } = await getImage(+imageId);
-
-  if (error !== null) {
-    return <p className="absolute inset-0 text-2xl text-center">{error}</p>;
-  }
-
   return (
     <Modal>
-      <ImageFullPageView image={image} />
+      <ImageFullPageView imageId={idAsNumber} />
     </Modal >
   );
 }          
