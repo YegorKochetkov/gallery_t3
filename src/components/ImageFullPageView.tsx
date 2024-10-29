@@ -8,10 +8,12 @@ export const ImageFullPageView = async (
 ) => {
   const { image, error } = await getImage(imageId);
 
-
   if (error !== null) {
     return <p className="text-2xl text-center">{error}</p>;
   }
+
+  const [ imageName, fileFormat ] = image.name.split(".");
+  console.debug('🚀 ~ file: ImageFullPageView.tsx:16 ~ imageName:', imageName);
 
   const client = clerkClient();
   const uploaderInfo = await client.users.getUser(image.userId);
@@ -26,14 +28,14 @@ export const ImageFullPageView = async (
           height={1600}
         />
       </div >
-      <div className="md:block hidden bg-zinc-400 w-[1px] h-auto" />
-      <div className="grow-0 h-min text-2xl shrink-0 md:basis-1/4">
-        <h2 className="border-zinc-400 mb-2 pb-2 border-b text-3xl text-center">
-          {image.name}
+      <div className="border-zinc-400 grow-0 text-2xl shrink-0 md:basis-1/4 border-l">
+        <h2 className="border-zinc-400 mb-4 px-2 pb-2 border-b text-3xl text-center capitalize">
+          {imageName}
         </h2>
-        <div className="inline-flex flex-col gap-2">
+        <div className="inline-flex flex-col gap-2 px-3 py-2">
           <p>Uploaded by {uploaderInfo?.fullName}</p>
           <p>Created on {image.createdAt.toLocaleDateString()}</p>
+          <p>File format is {fileFormat?.toUpperCase()}</p>
         </div>
       </div>
     </div >
