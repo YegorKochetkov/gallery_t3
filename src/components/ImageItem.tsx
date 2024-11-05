@@ -7,8 +7,8 @@ export const ImageItem = (
 		{ image: ImageType, height?: number, width?: number }
 ) => {
 	return (
-		<figure className="w-fit text-center">
-			<div className="relative bg-gray-300 rounded overflow-clip shimmer">
+		<figure className="w-auto text-center">
+			<div className="relative bg-gray-300 mx-auto rounded w-fit overflow-clip shimmer">
 				<Image
 					src={image.url}
 					alt={image.name}
