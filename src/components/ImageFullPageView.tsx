@@ -13,10 +13,8 @@ export const ImageFullPageView = async (
   }
 
   const [ imageName, fileFormat ] = image.name.split(".");
-  console.debug('🚀 ~ file: ImageFullPageView.tsx:16 ~ imageName:', imageName);
 
-  const client = clerkClient();
-  const uploaderInfo = await client.users.getUser(image.userId);
+  const uploaderInfo = await clerkClient().users.getUser(image.userId);
 
   return (
     <div className="flex md:flex-row flex-col gap-5 px-4 max-h-full">
