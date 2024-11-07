@@ -17,6 +17,22 @@
 			0 0 0.3em #000,
 			0 0 0.15em #000;
 	}
+
+	.image-list-hover-effect {
+		img {
+			position: relative;
+			transition: all 0.2s;
+		}
+
+		&:has(li:hover) img {
+			filter: grayscale(0.33);
+		}
+
+		li:hover img {
+			transform: scale3d(1.05, 1.05, 1);
+			filter: grayscale(0);
+		}
+	}
 }
 
 dialog {

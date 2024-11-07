@@ -14,7 +14,7 @@ export const ImageItem = (
 					alt={image.name}
 					width={height}
 					height={width}
-					className={`group-hover/image:scale-105 w-[${width}px] transform-gpu transition-transform object-cover`}
+					className={` w-[${width}px] object-cover`}
 				/>
 			</div>
 			<figcaption>{image.name}</figcaption>
