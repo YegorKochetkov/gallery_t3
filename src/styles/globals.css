@@ -19,17 +19,19 @@
 	}
 
 	.image-list-hover-effect {
+		transform-style: preserve-3d;
+
 		img {
 			position: relative;
 			transition: all 0.2s;
 		}
 
 		&:has(li:hover) img {
-			filter: grayscale(0.33);
+			filter: grayscale(0.5);
 		}
 
 		li:hover img {
-			transform: scale3d(1.05, 1.05, 1);
+			transform: scale3d(1.05, 1.05, 1.2);
 			filter: grayscale(0);
 		}
 	}
