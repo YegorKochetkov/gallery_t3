@@ -3,6 +3,9 @@
 import { useRouter } from "next/navigation";
 import { type ElementRef, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { Minimize2 } from "lucide-react";
+
+import { Button } from "./ui/button";
 
 export const Modal = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -27,12 +30,16 @@ export const Modal = ({ children }: { children: React.ReactNode }) => {
       className="bg-transparent px-7 py-14 w-screen h-screen text-gray-200 overflow-x-clip"
       onClose={onDismiss}
     >
-      <button
+      <Button
         onClick={onDismiss}
-        className="top-3 right-3 absolute bg-gray-300 hover:bg-gray-200 px-2 py-1 rounded text-black autofocus"
+        autoFocus
+        size="icon"
+        className="top-3 right-3 absolute"
+        title="Close"
       >
-        Close
-      </button>
+        <span className="sr-only">Close modal</span>
+        <Minimize2 />
+      </Button>
       {children}
     </dialog >,
     document.getElementById("modal-root")!
