@@ -8,6 +8,7 @@ import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import { TopNav } from "./_components/TopNav";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { ThemeProvider } from "~/components/themeProvider";
 
 const inter = Inter({
 	subsets: [ "latin" ],
@@ -39,12 +40,19 @@ export default function RootLayout({
 					routerConfig={extractRouterConfig(ourFileRouter)}
 				/>
 				<body
-					className={`${inter.className} min-h-screen bg-gray-200`}
+					className={`${inter.className} min-h-screen`}
 				>
-					<TopNav />
-					{children}
-					{modal}
-					<div id="modal-root" />
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange
+					>
+						<TopNav />
+						{children}
+						{modal}
+						<div id="modal-root" />
+					</ThemeProvider>
 				</body>
 			</html>
 		</ClerkProvider>
