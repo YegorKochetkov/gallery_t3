@@ -3,21 +3,19 @@ import Image from "next/image";
 import { type Image as ImageType } from "~/server/db/schema";
 
 export const ImageItem = (
-	{ image, height = 200, width = 200 }:
-		{ image: ImageType, height?: number, width?: number }
+	{ image }: { image: ImageType }
 ) => {
 	return (
-		<figure className="w-auto text-center">
-			<div className="relative bg-gray-300 mx-auto rounded w-fit overflow-clip shimmer">
+		<figure className="w-full text-center">
+			<div className="relative bg-gray-300 mx-auto rounded w-full h-52 overflow-clip shimmer">
 				<Image
 					src={image.url}
 					alt={image.name}
-					width={height}
-					height={width}
-					className={` w-[${width}px] object-cover`}
+					fill={true}
+					className="object-cover"
 				/>
 			</div>
-			<figcaption>{image.name}</figcaption>
+			<figcaption className="break-all">{image.name}</figcaption>
 		</figure>
 	);
 };

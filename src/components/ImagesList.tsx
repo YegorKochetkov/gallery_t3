@@ -13,10 +13,10 @@ export const ImagesList = async () => {
 	return (
 		<ul
 			data-images-list
-			className="justify-center gap-4 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] image-list-hover-effect"
+			className="justify-center gap-6 grid grid-cols-[repeat(auto-fill,minmax(13rem,1fr))] image-list-hover-effect"
 		>
 			{images?.map((image) => (
-				<li key={image.id} className="flex justify-center">
+				<li key={image.id}>
 					<Link href={`/images/${image.id}`}>
 						<ImageItem image={image} />
 					</Link>
