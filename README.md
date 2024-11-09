@@ -1,5 +1,7 @@
 # Gallery T3
 
+A very basic gallery made to familiarize users with the functionality of services like PostHog, Uploadthing, Upstash, Sentry, Clerk, and T3.
+
 ## TODO
 
 - [x] Deploy to Vercel
