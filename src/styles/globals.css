@@ -10,6 +10,18 @@
       before:from-transparent before:via-black/20 before:to-transparent;
 	}
 
+	.animate-spinner {
+		animation: spin 2s linear infinite;
+	}
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
 	.image-list-hover-effect {
 		transform-style: preserve-3d;
 

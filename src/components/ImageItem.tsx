@@ -12,7 +12,7 @@ export const ImageItem = (
 					src={image.url}
 					alt={image.name}
 					fill={true}
-					className="object-cover"
+					className="bg-inherit object-cover"
 				/>
 			</div>
 			<figcaption className="break-all">{image.name}</figcaption>

@@ -1,10 +1,11 @@
 "use client";
-import { Upload, ClockArrowUp } from 'lucide-react';
+import { Upload, ClockArrowUp, Loader } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import { useUploadThing } from "~/lib/uploadthing";
 import { buttonVariants } from '~/components/ui/button';
+import { toast } from 'sonner';
 
 // inferred input off useUploadThing
 type Input = Parameters<typeof useUploadThing>;
@@ -35,7 +36,16 @@ const useUploadThingInputProps = (...args: Input) => {
 export const UploadButton = () => {
   const router = useRouter();
   const { inputProps, isUploading } = useUploadThingInputProps("imageUploader", {
+    onUploadBegin(fileName) {
+      toast(
+        <p className="flex items-center gap-2"><Loader className="animate-spinner" />Uploading <b>{fileName}</b></p>, {
+        id: "upload-begin",
+        duration: 100000,
+      })
+    },
     onClientUploadComplete() {
+      toast.dismiss("upload-begin");
+      toast("Upload complete!", { id: "upload-complete" });
       router.refresh();
     }
   });

@@ -4,7 +4,6 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { UploadButton } from "./UploadButton";
 import { ModeToggle } from "~/components/modeToggle";
 
-
 export const TopNav = () => {
 	return (
 		<header data-main-header className="top-0 z-10 sticky border-gray-400 bg-inherit border-b">
