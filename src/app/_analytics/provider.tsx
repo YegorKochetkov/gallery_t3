@@ -11,28 +11,29 @@ if (typeof window !== "undefined") {
 		ui_host: 'https://us.posthog.com'
 	})
 }
+
 export function CSPostHogProvider({ children }: { children: React.ReactNode }) {
 	return (
 		<PostHogProvider client={posthog}>
 			<PostHogAuthWrapper>{children}</PostHogAuthWrapper>
 		</PostHogProvider>
 	);
-
-	function PostHogAuthWrapper({ children }: { children: React.ReactNode }) {
-		const userInfo = useUser();
-		const auth = useAuth();
-
-		React.useEffect(() => {
-			if (userInfo.user) {
-				posthog.identify(userInfo.user.id, {
-					email: userInfo.user.emailAddresses[ 0 ]?.emailAddress,
-					name: userInfo.user.fullName,
-				});
-			} else if (!auth.isSignedIn) {
-				posthog.reset();
-			}
-		}, [ userInfo, auth ]);
-
-		return children;
-	};
 }
+
+function PostHogAuthWrapper({ children }: { children: React.ReactNode }) {
+	const userInfo = useUser();
+	const auth = useAuth();
+
+	React.useEffect(() => {
+		if (userInfo.user) {
+			posthog.identify(userInfo.user.id, {
+				email: userInfo.user.emailAddresses[ 0 ]?.emailAddress,
+				name: userInfo.user.fullName,
+			});
+		} else if (!auth.isSignedIn) {
+			posthog.reset();
+		}
+	}, [ userInfo, auth ]);
+
+	return children;
+};
