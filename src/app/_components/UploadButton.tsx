@@ -6,6 +6,7 @@ import React from 'react';
 import { useUploadThing } from "~/lib/uploadthing";
 import { buttonVariants } from '~/components/ui/button';
 import { toast } from 'sonner';
+import { usePostHog } from 'posthog-js/react';
 
 // inferred input off useUploadThing
 type Input = Parameters<typeof useUploadThing>;
@@ -35,8 +36,11 @@ const useUploadThingInputProps = (...args: Input) => {
 
 export const UploadButton = () => {
   const router = useRouter();
+  const postHog = usePostHog();
+
   const { inputProps, isUploading } = useUploadThingInputProps("imageUploader", {
     onUploadBegin(fileName) {
+      postHog.capture("upload begin");
       toast(
         <p className="flex items-center gap-2"><Loader className="animate-spinner" />Uploading <b>{fileName}</b></p>, {
         id: "upload-begin",
@@ -44,6 +48,7 @@ export const UploadButton = () => {
       })
     },
     onClientUploadComplete() {
+      postHog.capture("upload complete");
       toast.dismiss("upload-begin");
       toast("Upload complete!", { id: "upload-complete" });
       router.refresh();

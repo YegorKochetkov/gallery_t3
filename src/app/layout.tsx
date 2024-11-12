@@ -10,6 +10,7 @@ import { TopNav } from "./_components/TopNav";
 import { ourFileRouter } from "./api/uploadthing/core";
 import { ThemeProvider } from "~/components/themeProvider";
 import { Toaster } from "~/components/ui/sonner";
+import { CSPostHogProvider } from "./_analytics/provider";
 
 const inter = Inter({
 	subsets: [ "latin" ],
@@ -30,33 +31,35 @@ export default function RootLayout({
 }) {
 	return (
 		<ClerkProvider>
-			<html lang="en">
-				<NextSSRPlugin
-					/**
-					 * The `extractRouterConfig` will extract **only** the route configs
-					 * from the router to prevent additional information from being
-					 * leaked to the client. The data passed to the client is the same
-					 * as if you were to fetch `/api/uploadthing` directly.
-					 */
-					routerConfig={extractRouterConfig(ourFileRouter)}
-				/>
-				<body
-					className={`${inter.className} min-h-screen`}
-				>
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="system"
-						enableSystem
-						disableTransitionOnChange
+			<CSPostHogProvider>
+				<html lang="en">
+					<NextSSRPlugin
+						/**
+						 * The `extractRouterConfig` will extract **only** the route configs
+						 * from the router to prevent additional information from being
+						 * leaked to the client. The data passed to the client is the same
+						 * as if you were to fetch `/api/uploadthing` directly.
+						 */
+						routerConfig={extractRouterConfig(ourFileRouter)}
+					/>
+					<body
+						className={`${inter.className} min-h-screen`}
 					>
-						<TopNav />
-						{children}
-						{modal}
-						<div id="modal-root" />
-						<Toaster />
-					</ThemeProvider>
-				</body>
-			</html>
+						<ThemeProvider
+							attribute="class"
+							defaultTheme="system"
+							enableSystem
+							disableTransitionOnChange
+						>
+							<TopNav />
+							{children}
+							{modal}
+							<div id="modal-root" />
+							<Toaster />
+						</ThemeProvider>
+					</body>
+				</html>
+			</CSPostHogProvider>
 		</ClerkProvider>
 	);
 }
