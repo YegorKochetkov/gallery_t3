@@ -13,6 +13,6 @@ A very basic gallery made to familiarize users with the functionality of service
 - [x] "taint" (server-only)
 - [x] Error management with Sentry
 - [x] Parallel routing for image page
-- [ ] Server actions for delete
-- [ ] Analytics with PostHog
+- [x] Server actions for delete
+- [x] Analytics with PostHog
 - [ ] Rate limiting with Upstash
