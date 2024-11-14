@@ -11,10 +11,10 @@ export default function GlobalError({
 }) {
 	useEffect(() => {
 		Sentry.captureException(error);
-	}, [error]);
+	}, [ error ]);
 
 	return (
-		<html>
+		<html lang="en">
 			<body>
 				{/* `NextError` is the default Next.js error page component. Its type
         definition requires a `statusCode` prop. However, since the App Router
