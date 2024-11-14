@@ -1,8 +1,11 @@
 import "server-only";
+
 import { auth } from "@clerk/nextjs/server";
+import { and, eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 
 import { db } from "./db";
-import { type Image } from "./db/schema";
+import { images, type Image } from "./db/schema";
 import { type OneOf } from "~/lib/utils";
 
 type getUserImagesResult = OneOf<[{ images: Image[]; error: null }, { images: null; error: string }]>;
@@ -47,5 +50,21 @@ export async function getImage(id: number): Promise<getImageResult> {
 		console.error("Can`t get image", error);
 
 		return { image: null, error: "Can`t get image. Please try again later." };
+	}
+}
+
+export async function deleteImage(id: number) {
+	const user = auth();
+
+	if (!user.userId) return { error: "Unauthorized" };
+
+	try {
+		await db.delete(images).where(and(eq(images.id, id), eq(images.userId, user.userId)));
+		revalidatePath("/");
+
+		return { error: null };
+	} catch (error) {
+		console.error("Can`t delete image", error);
+		return { error: "Can`t delete image. Please try again later." };
 	}
 }

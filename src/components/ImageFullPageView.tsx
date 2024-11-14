@@ -2,11 +2,18 @@ import { clerkClient } from "@clerk/nextjs/server";
 import Image from "next/image";
 
 import { getImage } from "~/server/queries";
+import { DeleteImageButton } from "./ui/deleteImageButton";
 
 export const ImageFullPageView = async (
-  { imageId }: { imageId: number }
+  { imageId, isInModalView = false }: { imageId: string, isInModalView?: boolean }
 ) => {
-  const { image, error } = await getImage(imageId);
+  const idAsNumber = Number(imageId);
+
+  if (Number.isNaN(idAsNumber)) {
+    return <p className="absolute inset-0 text-2xl text-center">Invalid image ID</p>;
+  }
+
+  const { image, error } = await getImage(idAsNumber);
 
   if (error !== null) {
     return <p className="text-2xl text-center">{error}</p>;
@@ -34,6 +41,7 @@ export const ImageFullPageView = async (
           <p>Uploaded by {uploaderInfo?.fullName}</p>
           <p>Created on {image.createdAt.toLocaleDateString()}</p>
           <p>File format is {fileFormat?.toUpperCase()}</p>
+          <DeleteImageButton imageId={idAsNumber} isInModalView={isInModalView} />
         </div>
       </div>
     </div >

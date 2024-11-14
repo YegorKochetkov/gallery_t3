@@ -7,7 +7,7 @@ export default async function ImageModal(props: { params: Promise<{ id: string }
 
   return (
     <Modal>
-      <ImageFullPageView imageId={idAsNumber} />
+      <ImageFullPageView imageId={id} isInModalView={isInModalView} />
     </Modal >
   );
 }          
