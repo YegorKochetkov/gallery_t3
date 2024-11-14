@@ -17,10 +17,10 @@ export const DeleteImageButton = (
 
     if (response.error) toast.error(response.error);
 
-    if (!isInModalView) {
-      router.push("/");
-    } else {
+    if (isInModalView) {
       router.back();
+    } else {
+      router.push("/");
     }
   }
 
