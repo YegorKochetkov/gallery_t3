@@ -18,9 +18,8 @@ const useUploadThingInputProps = (...args: Input) => {
     if (!e.target.files) return;
 
     const selectedFiles = Array.from(e.target.files);
-    const result = await $ut.startUpload(selectedFiles);
+    await $ut.startUpload(selectedFiles);
 
-    console.log("uploaded files", result);
     // TODO: persist result in state maybe?
   };
 
@@ -42,7 +41,11 @@ export const UploadButton = () => {
     onUploadBegin(fileName) {
       postHog.capture("upload begin");
       toast(
-        <p className="flex items-center gap-2"><Loader className="animate-spinner" />Uploading <b>{fileName}</b></p>, {
+        <p className="flex items-center gap-2 overflow-hidden" >
+          <Loader className="animate-spinner" />
+          <span className="min-w-max">Uploading</span>
+          <b className="truncate">{fileName}</b>
+        </p>, {
         id: "upload-begin",
         duration: 100000,
       })
