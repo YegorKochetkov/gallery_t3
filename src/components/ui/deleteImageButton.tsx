@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 
 import { Button } from './button';
 import { deleteImageAction } from '~/actions';
-import { useFormState } from 'react-dom';
 
 export const DeleteImageButton = (
   { imageId, isInModalView = false }: { imageId: number, isInModalView?: boolean }
