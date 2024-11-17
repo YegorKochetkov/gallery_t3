@@ -41,7 +41,7 @@ export const UploadButton = () => {
     onUploadBegin(fileName) {
       postHog.capture("upload begin");
       toast(
-        <p className="flex items-center gap-2 overflow-hidden" >
+        <p className="flex items-center gap-2 overflow-hidden">
           <Loader className="animate-spinner" />
           <span className="min-w-max">Uploading</span>
           <b className="truncate">{fileName}</b>
