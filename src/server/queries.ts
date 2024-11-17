@@ -8,7 +8,9 @@ import { db } from "./db";
 import { images, type Image } from "./db/schema";
 import { type OneOf } from "~/lib/utils";
 
-type getUserImagesResult = OneOf<[{ images: Image[]; error: null }, { images: null; error: string }]>;
+type getUserImagesResult = OneOf<
+	[{ images: Image[]; error: null }, { images: null; error: string }]
+>;
 
 export async function getUserImages(): Promise<getUserImagesResult> {
 	const user = auth();
@@ -29,7 +31,9 @@ export async function getUserImages(): Promise<getUserImagesResult> {
 	}
 }
 
-type getImageResult = OneOf<[{ image: Image; error: null }, { image: null; error: string }]>;
+type getImageResult = OneOf<
+	[{ image: Image; error: null }, { image: null; error: string }]
+>;
 
 export async function getImage(id: number): Promise<getImageResult> {
 	const user = auth();
@@ -43,7 +47,8 @@ export async function getImage(id: number): Promise<getImageResult> {
 
 		if (!image) return { image: null, error: "Image not found" };
 
-		if (image.userId !== user.userId) return { image: null, error: "Unauthorized" };
+		if (image.userId !== user.userId)
+			return { image: null, error: "Unauthorized" };
 
 		return { image, error: null };
 	} catch (error) {
@@ -59,7 +64,9 @@ export async function deleteImage(id: number) {
 	if (!user.userId) return { error: "Unauthorized" };
 
 	try {
-		await db.delete(images).where(and(eq(images.id, id), eq(images.userId, user.userId)));
+		await db
+			.delete(images)
+			.where(and(eq(images.id, id), eq(images.userId, user.userId)));
 		revalidatePath("/");
 
 		return { error: null };
