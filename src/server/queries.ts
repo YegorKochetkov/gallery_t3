@@ -25,7 +25,7 @@ export async function getUserImages(): Promise<getUserImagesResult> {
 
 		return { images, error: null };
 	} catch (error) {
-		console.error("Can`t get images", error);
+		console.warn(`Can't get images by user ${user.userId}`, error);
 
 		return { images: null, error: "Can`t get images. Please try again later." };
 	}
@@ -52,7 +52,7 @@ export async function getImage(id: number): Promise<getImageResult> {
 
 		return { image, error: null };
 	} catch (error) {
-		console.error("Can`t get image", error);
+		console.warn(`Can't get image ${id} by user ${user.userId}`, error);
 
 		return { image: null, error: "Can`t get image. Please try again later." };
 	}
@@ -71,7 +71,7 @@ export async function deleteImage(id: number) {
 
 		return { error: null };
 	} catch (error) {
-		console.error("Can`t delete image", error);
+		console.warn(`Can't delete image ${id} by user ${user.userId}`, error);
 		return { error: "Can`t delete image. Please try again later." };
 	}
 }
