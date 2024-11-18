@@ -11,7 +11,7 @@ export const DeleteImageButton = (
   { imageId, isInModalView = false }: { imageId: number, isInModalView?: boolean }
 ) => {
   const router = useRouter();
-  const [_state, formAction, isPending] = useActionState(handleDelete, null);
+  const [ _state, formAction, isPending ] = useActionState(handleDelete, null);
 
   async function handleDelete(_state: void | null, formData: FormData) {
     const response = await deleteImageAction(formData);
@@ -27,11 +27,11 @@ export const DeleteImageButton = (
 
   return (
     <div>
-      <form
-        action={formAction}
-      >
+      <form action={formAction}>
         <input type="hidden" name="imageId" value={imageId} />
-        <Button variant="destructive" type="submit">{isPending ? "Deleting..." : "Delete"}</Button>
+        <Button variant="destructive" type="submit" disabled={isPending}>
+          {isPending ? "Deleting..." : "Delete"}
+        </Button>
       </form>
     </div>
   )

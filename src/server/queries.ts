@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 import { db } from "./db";
 import { images, type Image } from "./db/schema";
 import { type OneOf } from "~/lib/utils";
+import analyticsServerClient from "./analytics";
 
 type getUserImagesResult = OneOf<
 	[{ images: Image[]; error: null }, { images: null; error: string }]
@@ -67,6 +68,15 @@ export async function deleteImage(id: number) {
 		await db
 			.delete(images)
 			.where(and(eq(images.id, id), eq(images.userId, user.userId)));
+
+		analyticsServerClient.capture({
+			distinctId: user.userId,
+			event: "Image deleted",
+			properties: {
+				imageId: id,
+			},
+		});
+
 		revalidatePath("/");
 
 		return { error: null };
