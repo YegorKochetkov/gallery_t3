@@ -50,6 +50,11 @@ export const UploadButton = () => {
         duration: 100000,
       })
     },
+    onUploadError(e) {
+      postHog.capture("upload error");
+      toast.dismiss("upload-begin");
+      toast.error(e.message);
+    },
     onClientUploadComplete() {
       postHog.capture("upload complete");
       toast.dismiss("upload-begin");
